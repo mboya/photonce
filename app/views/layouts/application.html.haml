@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Photounce
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    :css
+      body{
+      	height: 0px;
+      }
+      .top{
+      	margin-top: 6%;
+      }
+  %body
+    .ui.fixed.white.menu{:style => "margin-bottom: 50px"}
+      .ui.container
+        %h1= link_to "Photounce", root_path, class: 'item'
+      %a.item
+        .cart-text= render 'layouts/cart_text'
+      %a.item{:href => "/users/sign_up"} Register
+      %a.item{:href => "/users/sign_in"} Login
+    .container
+      .top
+        = yield

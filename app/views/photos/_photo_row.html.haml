@@ -1,0 +1,16 @@
+.content
+  %span.right.floated
+    Unit Price:
+    %span{:style => "color: green"}= number_to_currency photo.price
+  = photo.name
+
+.extra.content
+  .ui.large.transparent.left.icon.input
+    .ui.form
+      = form_for order_item, remote: true do |f|
+        .ui.grid
+          .eight.wide.column
+            = f.number_field :quantity, value: 1, class: "form-control", min: 1
+            = f.hidden_field :photo_id, value: photo.id
+          .eight.wide.column
+            = f.submit "Add to Cart"

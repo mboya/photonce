@@ -1,0 +1,29 @@
+/ <h3 class="text-center">Photos for Sale</h3>
+.ui.container
+  %h3.text-center Photos for Sale
+  .ui.grid
+    - @photos.each do |photo|
+      .four.wide.column
+        .ui.card
+          .ui.content
+            .right.floated.meta
+              = time_ago_in_words(photo.created_at)
+            = image_tag("")
+
+          .image
+            = image_tag photo.image(:medium)
+
+          = render "photo_row", photo: photo, order_item: @order_item
+
+          
+
+
+          -#= render "photo_row", photo: photo, order_item: @order_item
+/
+  <div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+  <haml_silent>
+  </haml_silent><haml_silent>
+  </haml_silent><haml_silent>
+  </haml_silent>  </div>
+  </div>

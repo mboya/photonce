@@ -1,0 +1,25 @@
+.ui.container{style: 'margin-top: 30px;'}
+  .ui.piled.segment
+    .ui.grid
+      .eight.wide.column
+        .ui.header
+          = photo.name
+        Total Price:
+        %span{:style => "color: green"}= number_to_currency order_item.total_price
+      .eight.wide.column
+        = form_for order_item, remote: true do |f|
+          .ui.grid
+            .six.wide.column{align: 'right'}
+              Unit Price:
+              %span{:style => "color: green"}= number_to_currency order_item.unit_price
+            .six.wide.column{align: 'right'}
+              .field
+                = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1
+          .field
+            = f.hidden_field :photo_id, value: photo.id
+          %br/
+          %div{align: 'right'}
+            = f.submit "Update Quantity", class: "ui button"
+            = link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete the photo '#{order_item.photo.name}' from your cart?" }, method: :delete, remote: true, class: "ui button" }
+
+

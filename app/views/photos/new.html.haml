@@ -1,0 +1,10 @@
+.ui.container
+  .ui.grid.centered
+    .four.wide.column
+      .ui.green.segment
+        .ui.form
+          %h1 New photo
+          = render 'form'
+          - #= link_to 'Back', photos_path
+    .twelve.wide.column
+      .ui.red.segment
